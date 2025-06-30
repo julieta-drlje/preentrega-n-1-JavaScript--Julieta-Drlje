@@ -7,7 +7,33 @@
     <title>Entrenamiento y Alimentacion</title>
 </head>
 <body>
-    <h1>¡Esto va a ser un organizador de entrenamiento y alimentacion!</h1>
-    <h2>Julieta Drlje</h2>
+     <main class="container">
+    <h1>Planificador Semanal</h1>
+
+    <form id="trainingForm">
+      <label for="trainingDay">Día:</label>
+      <select id="trainingDay" required>
+        <option value="">Seleccionar día</option>
+        <option>Lunes</option><option>Martes</option><option>Miércoles</option>
+        <option>Jueves</option><option>Viernes</option><option>Sábado</option><option>Domingo</option>
+      </select>
+
+      <label for="trainingType">Tipo de entrenamiento:</label>
+      <select id="trainingType" required>
+        <option value="">Seleccionar tipo</option>
+        <option value="fondo">Fondo</option>
+        <option value="pasadas">Pasadas</option>
+        <option value="descanso">Descanso</option>
+        <option value="otro">Otro</option>
+      </select>
+
+      <button type="submit">Agregar al plan</button>
+    </form>
+
+    <button id="clearAll">Borrar todo el plan</button>
+
+    <section id="weeklyPlan"></section>
+  </main>
+
 </body>
 </html>
