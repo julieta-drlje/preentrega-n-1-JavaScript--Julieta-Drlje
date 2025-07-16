@@ -1,39 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="./JS/main.js"></script>
-    <title>Entrenamiento y Alimentacion</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador Running + Nutrición</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+  <script src="js/utils.js" defer></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
-     <main class="container">
-    <h1>Planificador Semanal</h1>
+  <header>
+    <h1>🏃‍♀️ Planificador de Entrenamiento y Nutrición</h1>
+  </header>
+  <main class="container">
+    <section id="formulario-section">
+      <h2>Cargar entrenamiento diario</h2>
+      <form id="formulario">
+        <label for="dia">Día:</label>
+        <select id="dia" required>
+          <option value="">Seleccionar día</option>
+          <option>Lunes</option>
+          <option>Martes</option>
+          <option>Miércoles</option>
+          <option>Jueves</option>
+          <option>Viernes</option>
+          <option>Sábado</option>
+          <option>Domingo</option>
+        </select>
 
-    <form id="trainingForm">
-      <label for="trainingDay">Día:</label>
-      <select id="trainingDay" required>
-        <option value="">Seleccionar día</option>
-        <option>Lunes</option><option>Martes</option><option>Miércoles</option>
-        <option>Jueves</option><option>Viernes</option><option>Sábado</option><option>Domingo</option>
-      </select>
+        <label for="tipoEntrenamiento">Entrenamiento:</label>
+        <select id="tipoEntrenamiento" required>
+          <option value="">Seleccionar tipo</option>
+          <option value="fondo">Fondo</option>
+          <option value="pasadas">Pasadas</option>
+          <option value="descanso">Descanso</option>
+          <option value="otro">Otro</option>
+        </select>
 
-      <label for="trainingType">Tipo de entrenamiento:</label>
-      <select id="trainingType" required>
-        <option value="">Seleccionar tipo</option>
-        <option value="fondo">Fondo</option>
-        <option value="pasadas">Pasadas</option>
-        <option value="descanso">Descanso</option>
-        <option value="otro">Otro</option>
-      </select>
+        <button type="submit">Agregar</button>
+      </form>
+    </section>
 
-      <button type="submit">Agregar al plan</button>
-    </form>
+    <section class="acciones">
+      <button id="cargarJson">📥 Cargar plan preestablecido</button>
+      <button id="borrarTodo">🗑️ Borrar plan</button>
+    </section>
 
-    <button id="clearAll">Borrar todo el plan</button>
-
-    <section id="weeklyPlan"></section>
+    <section id="planSemanal-section">
+      <h2>🗓️ Plan Semanal</h2>
+      <div id="planSemanal"></div>
+    </section>
   </main>
-
+  <footer>
+    <p>Proyecto Final - Julieta Drlje - 2025</p>
+  </footer>
 </body>
 </html>
