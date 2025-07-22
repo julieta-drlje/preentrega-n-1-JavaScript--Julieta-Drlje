@@ -11,10 +11,9 @@
   <script src="js/main.js" defer></script>
 </head>
 <body>
-  <header>
+ <header>
     <h1>🏃‍♀️ Planificador de Entrenamiento y Nutrición</h1>
-  </header>
-  <main class="container">
+  </header>  <main class="container">
     <section id="formulario-section">
       <h2>Cargar entrenamiento diario</h2>
       <form id="formulario">
@@ -28,32 +27,41 @@
           <option>Viernes</option>
           <option>Sábado</option>
           <option>Domingo</option>
-        </select>
+        </select><label for="tipoEntrenamiento">Entrenamiento:</label>
+    <select id="tipoEntrenamiento" required>
+      <option value="">Seleccionar tipo</option>
+      <option value="fondo">Fondo</option>
+      <option value="pasadas">Pasadas</option>
+      <option value="descanso">Descanso</option>
+      <option value="otro">Otro</option>
+    </select>
 
-        <label for="tipoEntrenamiento">Entrenamiento:</label>
-        <select id="tipoEntrenamiento" required>
-          <option value="">Seleccionar tipo</option>
-          <option value="fondo">Fondo</option>
-          <option value="pasadas">Pasadas</option>
-          <option value="descanso">Descanso</option>
-          <option value="otro">Otro</option>
-        </select>
+    <button type="submit">Agregar</button>
+  </form>
+</section>
 
-        <button type="submit">Agregar</button>
-      </form>
-    </section>
+<section class="acciones">
+  <button id="cargarJson">📥 Cargar plan preestablecido</button>
+  <button id="borrarTodo">🗑️ Borrar plan</button>
+  <label for="filtroDia">Filtrar por día:</label>
+  <select id="filtroDia">
+    <option value="">Ver todos</option>
+    <option>Lunes</option>
+    <option>Martes</option>
+    <option>Miércoles</option>
+    <option>Jueves</option>
+    <option>Viernes</option>
+    <option>Sábado</option>
+    <option>Domingo</option>
+  </select>
+</section>
 
-    <section class="acciones">
-      <button id="cargarJson">📥 Cargar plan preestablecido</button>
-      <button id="borrarTodo">🗑️ Borrar plan</button>
-    </section>
+<section id="planSemanal-section">
+  <h2>🗓️ Plan Semanal</h2>
+  <div id="planSemanal"></div>
+</section>
 
-    <section id="planSemanal-section">
-      <h2>🗓️ Plan Semanal</h2>
-      <div id="planSemanal"></div>
-    </section>
-  </main>
-  <footer>
+  </main>  <footer>
     <p>Proyecto Final - Julieta Drlje - 2025</p>
   </footer>
 </body>

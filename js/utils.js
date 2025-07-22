@@ -2,6 +2,12 @@ function guardarPlan(plan) {
   localStorage.setItem("plan", JSON.stringify(plan));
 }
 
+
+function obtenerPlan() {
+  return JSON.parse(localStorage.getItem("plan")) || [];
+}
+
+
 function sugerirAlimentacion(tipo) {
   switch (tipo) {
     case "fondo":
