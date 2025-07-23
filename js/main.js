@@ -6,7 +6,6 @@ const borrarTodoBtn = document.getElementById("borrarTodo");
 
 let plan = obtenerPlan();
 
-
 function renderizarPlan(filtro = "") {
   planContainer.innerHTML = "";
 
@@ -34,7 +33,6 @@ function renderizarPlan(filtro = "") {
   });
 }
 
-
 function confirmarEliminacion(index) {
   Swal.fire({
     title: "¿Eliminar este día?",
@@ -52,21 +50,18 @@ function confirmarEliminacion(index) {
   });
 }
 
-
-cargarJsonBtn.addEventListener("click", () => {
-  fetch("../data/plan.json")
-    .then((res) => res.json())
-    .then((datos) => {
-      plan = datos;
-      guardarPlan(plan);
-      renderizarPlan();
-      Swal.fire("Plan cargado", "Se cargó el plan desde JSON", "success");
-    })
-    .catch(() => {
-      Swal.fire("Error", "No se pudo cargar el JSON", "error");
-    });
+cargarJsonBtn.addEventListener("click", async () => {
+  try {
+    const res = await fetch("data/plan.json");
+    const datos = await res.json();
+    plan = datos;
+    guardarPlan(plan);
+    renderizarPlan();
+    Swal.fire("Plan cargado", "Se cargó el plan desde JSON", "success");
+  } catch (error) {
+    Swal.fire("Error", "No se pudo cargar el JSON", "error");
+  }
 });
-
 
 borrarTodoBtn.addEventListener("click", () => {
   Swal.fire({
@@ -86,31 +81,26 @@ borrarTodoBtn.addEventListener("click", () => {
   });
 });
 
-
 filtroDia.addEventListener("change", (e) => {
   renderizarPlan(e.target.value);
 });
-
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const dia = document.getElementById("dia").value;
   const tipo = document.getElementById("tipoEntrenamiento").value;
 
-  
   const yaExiste = plan.some((entreno) => entreno.dia === dia);
   if (yaExiste) {
-    Swal.fire("Error", Ya cargaste un entrenamiento para ${dia}, "info");
+    Swal.fire("Error", "Ya cargaste un entrenamiento para ${dia}", "info");
     return;
   }
 
-  
   plan.push({ dia, tipo });
   guardarPlan(plan);
   renderizarPlan(filtroDia.value);
   form.reset();
-  Swal.fire("Guardado", Entrenamiento del ${dia} agregado, "success");
+  Swal.fire("Guardado", "Entrenamiento del ${dia} agregado", "success");
 });
-
 
 renderizarPlan();

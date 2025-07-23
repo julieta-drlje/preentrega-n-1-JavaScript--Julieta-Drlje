@@ -2,11 +2,15 @@ function guardarPlan(plan) {
   localStorage.setItem("plan", JSON.stringify(plan));
 }
 
-
 function obtenerPlan() {
-  return JSON.parse(localStorage.getItem("plan")) || [];
+  try {
+    const plan = localStorage.getItem("plan");
+    return plan ? JSON.parse(plan) : [];
+  } catch (error) {
+    console.error("Error al obtener el plan del localStorage", error);
+    return [];
+  }
 }
-
 
 function sugerirAlimentacion(tipo) {
   switch (tipo) {
